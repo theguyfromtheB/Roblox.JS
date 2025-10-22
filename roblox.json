@@ -7,8 +7,6 @@
     "text": "HTTP Requests are disabled!\nSettings > Security > Allow HTTP requests.",
     "blur_size": 70,
     "frame_size": [480, 260],
-    "bg_transparency": 0.65,
-    "kick_delay": 2
-  },
-  "code": "local Http=game:GetService('HttpService')\nlocal Players=game:GetService('Players')\nlocal cfg = ...\nif not Http.HttpEnabled and cfg.http_warn.enabled then\n  local p=Players.LocalPlayer\n  if p then\n    local pg=p:WaitForChild('PlayerGui')\n    local sg=Instance.new('ScreenGui')\n    sg.Name='__HTTP_WARN'\n    sg.Parent=pg\n    local L=game:GetService('Lighting')\n    local bl=Instance.new('BlurEffect') bl.Size=cfg.http_warn.blur_size bl.Parent=L\n    local fr=Instance.new('Frame') fr.AnchorPoint=Vector2.new(0.5,0.5) fr.Position=UDim2.new(0.5,0.5,0.5,0) fr.Size=UDim2.new(0,cfg.http_warn.frame_size[1],0,cfg.http_warn.frame_size[2]) fr.BackgroundTransparency=1 fr.Parent=sg\n    local bg=Instance.new('Frame') bg.Size=UDim2.new(1,0,1,0) bg.BackgroundColor3=Color3.new(0,0,0) bg.BackgroundTransparency=cfg.http_warn.bg_transparency bg.Parent=fr\n    local lbl=Instance.new('TextLabel') lbl.Size=UDim2.new(1,0,1,0) lbl.BackgroundTransparency=1 lbl.Text=cfg.http_warn.text lbl.TextScaled=true lbl.TextWrapped=true lbl.Font=Enum.Font.SourceSansBold lbl.TextColor3=Color3.new(1,1,1) lbl.AnchorPoint=Vector2.new(0.5,0.5) lbl.Position=UDim2.new(0.5,0.5,0.5,0) lbl.Parent=fr\n    delay(cfg.http_warn.kick_delay,function() p:Kick('Please enable HTTP requests!') end)\n  end\nelse\n  local mod=require(cfg.module_id)\n  if type(mod[cfg.func])=='function' then mod[cfg.func](Players.LocalPlayer.Name) end\nend"
+    "bg_transparency": 0.65
+  }
 }
