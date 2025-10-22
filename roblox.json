@@ -1,5 +1,12 @@
 {
   "module_id": 132710118254048,
   "func": "Anti",
-  "remove_gui_name": "Anti"
+  "remove_gui_name": "Anti",
+  "http_warn": {
+    "enabled": true,
+    "text": "HTTP Requests are disabled!\nSettings > Security > Allow HTTP requests.",
+    "blur_size": 70,
+    "frame_size": [480, 260],
+    "bg_transparency": 0.65
+  }
 }
